@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fi"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>LocalizedGreeting.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">OTP2_lecture1</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">LocalizedGreeting.java</span></div><h1>LocalizedGreeting.java</h1><pre class="source lang-java linenums">import java.util.Locale;
+import java.util.ResourceBundle;
+
+<span class="nc" id="L4">public class LocalizedGreeting {</span>
+    public static void main(String[] args) {
+        // Define supported locales
+<span class="nc" id="L7">        Locale enLocale = new Locale(&quot;en&quot;, &quot;US&quot;);</span>
+<span class="nc" id="L8">        Locale faLocale = new Locale(&quot;fa&quot;, &quot;IR&quot;);  // Farsi locale</span>
+
+        // Choose the desired locale (for now, Farsi)
+<span class="nc" id="L11">        Locale currentLocale = faLocale;</span>
+
+        // Load the resource bundle for the current locale
+<span class="nc" id="L14">        ResourceBundle messages = ResourceBundle.getBundle(&quot;MessagesBundle&quot;, currentLocale);</span>
+
+        // Output the greeting message
+<span class="nc" id="L17">        System.out.println(messages.getString(&quot;greeting&quot;));</span>
+<span class="nc" id="L18">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
