@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    
+    tools {
+        maven 'Maven3'
+    }
     environment {
         DOCKERHUB_CREDENTIALS = credentials('8169bb21-1a4c-4562-9338-13d446396218')
         DOCKER_IMAGE = 'valtterikonen/otp2_vk1_localdemo1:latest'
@@ -7,17 +11,19 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/valtterikonen/LocalizedGreeting.git' 
+                git branch: 'main', url: 'https://github.com/valtterikonen/LocalizedGreeting.git'
             }
         }
         stage('Build') {
             steps {
-                sh 'mvn clean package'
+                // Use 'bat' for Windows
+                bat 'mvn clean package'
             }
         }
         stage('Test') {
             steps {
-                sh 'mvn test'
+                // Use 'bat' for Windows
+                bat 'mvn test'
             }
         }
         stage('Docker Build') {
@@ -39,7 +45,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    sh 'curl -X POST https://labs.play-with-docker.com/instances -d "image=${env.DOCKER_IMAGE}"'
+                    // You might need to replace 'curl' with a Windows-compatible alternative if curl is not available.
+                    bat 'curl -X POST https://labs.play-with-docker.com/instances -d "image=${env.DOCKER_IMAGE}"'
                 }
             }
         }
