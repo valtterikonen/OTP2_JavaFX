@@ -1,23 +1,44 @@
-# Use the official Maven image to build the application
-FROM maven:3.8.6-openjdk-11 AS builder
+<<<<<<< HEAD
+# Stage 1: Build the application
+FROM maven:3.8.4-openjdk-11 AS build
 
 # Set the working directory
 WORKDIR /app
 
-# Copy the pom.xml and install dependencies
+# Copy the pom.xml and source files
 COPY pom.xml .
 COPY src ./src
+
+# Build the application
 RUN mvn clean package -DskipTests
 
-# Use a smaller base image for the final runtime
+# Stage 2: Create a smaller runtime image
 FROM openjdk:11-jre-slim
 
-# Set the working directory in the runtime image
+# Set the working directory
 WORKDIR /app
 
-# Copy the built jar file from the builder image
-COPY --from=builder /app/target/*.jar app.jar
+# Copy only the JAR file from the build stage
+COPY --from=build /app/target/*.jar app.jar
 
-# Specify the command to run the application
+# Command to run the application
+=======
+# Stage 1: Build the application with JDK 17
+FROM maven:3.8.4-openjdk-17 AS build
+
+WORKDIR /app
+
+COPY pom.xml .
+COPY src ./src
+
+RUN mvn clean package -DskipTests -X
+
+# Stage 2: Create a smaller runtime image
+FROM openjdk:17
+
+WORKDIR /app
+
+COPY --from=build /app/target/*.jar app.jar
+
+>>>>>>> 5cf92ad (greet)
 ENTRYPOINT ["java", "-jar", "app.jar"]
-
