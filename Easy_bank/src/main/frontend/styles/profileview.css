@@ -1,0 +1,47 @@
+/* src/main/resources/META-INF/resources/frontend/styles/styles.css */
+
+.centered-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 50px;
+    max-width: 500px;
+}
+
+.centered-column h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.centered-column h3 {
+    color: #555;
+    margin: 10px 0 5px;
+}
+
+.centered-column div {
+    color: #777;
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.dialog {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

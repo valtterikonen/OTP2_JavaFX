@@ -1,0 +1,25 @@
+# Ignore Maven build files
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# Ignore IntelliJ IDEA project files
+.idea/
+*.iml
+
+# Ignore logs and temporary files
+*.log
+*.tmp
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore Dockerfile itself
+Dockerfile
+
+# Ignore generated source files
+src/main/generated/
